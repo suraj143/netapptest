@@ -1,15 +1,23 @@
+
 @echo off
 
-echo "This will first install chocolatey, then other tools"
+echo This will first install chocolatey, then other tools
 powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 choco feature enable -n=allowGlobalConfirmation
+choco --version
 
 echo "Install dependency packages" 
 dism /online /Enable-Feature /FeatureName:TelnetClient
-choco install notepadplusplus -yes
-choco install azure-cli -yes
-choco install kubernetes-cli -yes
-choco install googlechrome -yes
+rem choco uninstall azure-cli -y
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi"
+choco install kubernetes-cli -y
+kubectl --version
+start /b az --version 
+choco install googlechrome -y
+choco install notepadplusplus -y
+
+echo "sleep for 10 sec"
+powershell Start-Sleep -s 10
 
 set "clientId=c8cc3204-f015-495f-82d6-e2b0ecefa7e3"
 set "clientSecret=mj-ovxpilLJ.GgNX_s-idkJflhJK~Y0hwy" 
@@ -37,7 +45,6 @@ powershell Start-Sleep -s 20
 
 echo "Deploy core in AKS"
 kubectl apply -f https://raw.githubusercontent.com/suraj143/netapptest/main/core.yaml
-rem kubectl apply -f "C:\kubernetes\core.yaml"
 
 echo "sleep for 60 sec"
 powershell Start-Sleep -s 60
