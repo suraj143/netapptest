@@ -27,16 +27,17 @@ echo "list worker nodes"
 kubectl get nodes -o wide
 
 echo "Delete core in AKS"
-kubectl delete -f "C:\kubernetes\core.yaml"
+kubectl delete -f https://raw.githubusercontent.com/suraj143/netapptest/main/core.yaml
 
 echo "sleep for 20 sec"
 powershell Start-Sleep -s 20
 
 echo "Deploy core in AKS"
-kubectl apply -f "C:\kubernetes\core.yaml"
+kubectl apply -f https://raw.githubusercontent.com/suraj143/netapptest/main/core.yaml
+rem kubectl apply -f "C:\kubernetes\core.yaml"
 
 echo "sleep for 60 sec"
-powershell Start-Sleep -s 60
+rem powershell Start-Sleep -s 60
 
 echo "List running pods in core-dev namespace"
 kubectl get pods -n core-dev
