@@ -1,5 +1,8 @@
-echo " Install chocho manually in powershell "
-powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
+@echo off
+
+echo "This will first install chocolatey, then other tools"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+choco feature enable -n=allowGlobalConfirmation
 
 echo "Install dependency packages" 
 dism /online /Enable-Feature /FeatureName:TelnetClient
