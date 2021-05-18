@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: core-dev
+  name: talon-core
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: core
-  namespace: core-dev
+  namespace: talon-core
 spec:
   replicas: 1
   selector:
@@ -55,7 +55,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: core
-  namespace: core-dev
+  namespace: talon-core
   labels:
     name: core
 spec:
