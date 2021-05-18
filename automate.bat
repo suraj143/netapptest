@@ -37,7 +37,7 @@ kubectl apply -f https://raw.githubusercontent.com/suraj143/netapptest/main/core
 rem kubectl apply -f "C:\kubernetes\core.yaml"
 
 echo "sleep for 60 sec"
-rem powershell Start-Sleep -s 60
+powershell Start-Sleep -s 60
 
 echo "List running pods in core-dev namespace"
 kubectl get pods -n core-dev
