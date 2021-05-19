@@ -57,3 +57,5 @@ powershell Start-Sleep -s 30
 
 echo "List pod loadbalencer endpoints in core-dev namespace"
 kubectl get svc -n core-dev
+
+exit 0
