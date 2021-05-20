@@ -48,13 +48,13 @@ kubectl apply -f https://raw.githubusercontent.com/suraj143/netapptest/main/core
 echo "sleep for 30 sec"
 powershell Start-Sleep -s 30
 
-echo "List running pods in core-dev namespace"
-kubectl get pods -n core-dev
+echo "List running pods in talon-core namespace"
+kubectl get pods -n talon-core
 
 echo "sleep 30 sec"
 rem powershell Start-Sleep -s 30
 
-echo "List pod loadbalencer endpoints in core-dev namespace"
-kubectl get svc -n core-dev
+echo "List pod loadbalencer endpoints in talon-core namespace"
+kubectl get svc -n talon-core
 
 exit 0
