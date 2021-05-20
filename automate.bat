@@ -43,10 +43,10 @@ echo "sleep for 20 sec"
 rem powershell Start-Sleep -s 20
 
 echo "Deploy core in AKS"
-rem kubectl apply -f https://raw.githubusercontent.com/suraj143/netapptest/main/core.yaml
+kubectl apply -f https://raw.githubusercontent.com/suraj143/netapptest/main/core.yaml
 
-echo "sleep for 60 sec"
-rem powershell Start-Sleep -s 60
+echo "sleep for 30 sec"
+powershell Start-Sleep -s 30
 
 echo "List running pods in core-dev namespace"
 kubectl get pods -n core-dev
